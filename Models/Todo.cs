@@ -16,15 +16,8 @@ namespace TodoApi.Models
             Id = NextId++;
         }
 
-        // Static constructor to add dummy todos
-        static Todo()
-        {
-            Todos.Add(new Todo { Title = "Learn ASP.NET Core", IsComplete = false });
-            Todos.Add(new Todo { Title = "Build a Web API", IsComplete = true });
-            Todos.Add(new Todo { Title = "Test API with Postman", IsComplete = false });
-            Todos.Add(new Todo { Title = "Deploy to Azure", IsComplete = false });
-            Todos.Add(new Todo { Title = "Write API documentation", IsComplete = false });
-        }
+  
+       
     }
 
      public class TodoUpdateModel
