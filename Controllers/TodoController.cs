@@ -33,21 +33,23 @@ namespace TodoApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateTodo(int id, Todo todo)
+        public IActionResult UpdateTodo(int id, [FromBody] TodoUpdateModel todoUpdate)
         {
-            if (id != todo.Id)
-            {
-                return BadRequest();
-            }
-
             var existingTodo = Todo.Todos.Find(t => t.Id == id);
             if (existingTodo == null)
             {
                 return NotFound();
             }
 
-            existingTodo.Title = todo.Title;
-            existingTodo.IsComplete = todo.IsComplete;
+            // Update only the properties that are provided
+            if (todoUpdate.Title != null)
+            {
+                existingTodo.Title = todoUpdate.Title;
+            }
+            if (todoUpdate.IsComplete.HasValue)
+            {
+                existingTodo.IsComplete = todoUpdate.IsComplete.Value;
+            }
 
             return NoContent();
         }
@@ -65,4 +67,6 @@ namespace TodoApi.Controllers
             return NoContent();
         }
     }
+
+
 }

@@ -26,4 +26,10 @@ namespace TodoApi.Models
             Todos.Add(new Todo { Title = "Write API documentation", IsComplete = false });
         }
     }
+
+     public class TodoUpdateModel
+    {
+        public string? Title { get; set; }
+        public bool? IsComplete { get; set; }
+    }
 }
